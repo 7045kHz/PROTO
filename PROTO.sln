@@ -3,13 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PROTO.WebAPI", "PROTO.WebAPI\PROTO.WebAPI.csproj", "{49067E37-C6E7-4E9B-9F87-56A72268F23B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PROTO.WebAPI", "PROTO.WebAPI\PROTO.WebAPI.csproj", "{49067E37-C6E7-4E9B-9F87-56A72268F23B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PROTO.Core", "PROTO.Core\PROTO.Core.csproj", "{D87F9477-81E6-4370-8392-1A9A8B330CE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PROTO.Core", "PROTO.Core\PROTO.Core.csproj", "{D87F9477-81E6-4370-8392-1A9A8B330CE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PROTO.UseCase", "PROTO.UseCase\PROTO.UseCase.csproj", "{90919D96-9148-46D1-A973-4728F9EBD723}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PROTO.UseCase", "PROTO.UseCase\PROTO.UseCase.csproj", "{90919D96-9148-46D1-A973-4728F9EBD723}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PROTO.Infrastructure", "PROTO.Infrastructure\PROTO.Infrastructure.csproj", "{DE0E2F70-BEB9-4015-AD9C-6DD3425B7101}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PROTO.Infrastructure", "PROTO.Infrastructure\PROTO.Infrastructure.csproj", "{DE0E2F70-BEB9-4015-AD9C-6DD3425B7101}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{86292DD5-CFF0-42FD-A2D4-91679A474975}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
