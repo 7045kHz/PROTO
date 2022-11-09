@@ -15,7 +15,7 @@ CREATE TABLE [dbo].[Host_Devices](
 	[SerialNumber] [nvarchar](50) NULL
 ) ON [PRIMARY]
 GO
-```
+```  
 
 ### Create Stored Procedures
 

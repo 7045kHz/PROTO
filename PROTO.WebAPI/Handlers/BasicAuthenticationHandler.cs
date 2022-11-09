@@ -44,7 +44,10 @@ namespace PROTO.WebAPI.Handlers
                 var user=await this._unitOfWorkAuth.BasicAuthorization.GetBasicAuthAsync(username,password);
                 if(user==null)
                     return AuthenticateResult.Fail("Authorization Failed");
-                var claim = new[] { new Claim(ClaimTypes.Name, username) };
+                var claim = new[] { 
+                    new Claim(ClaimTypes.Name, user.UserName) ,
+                    new Claim(ClaimTypes.Role, user.Role)
+                };
                 var identity=new ClaimsIdentity(claim,Scheme.Name);
                 var principle=new ClaimsPrincipal(identity);
                 var ticket = new AuthenticationTicket(principle, Scheme.Name);

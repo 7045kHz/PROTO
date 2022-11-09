@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace PROTO.WebAPI.Controllers
 {
-    [Authorize]
+    [Authorize(Roles="ro,rw")]
     [Route("api/[controller]")]
     [ApiController]
    
@@ -24,6 +24,8 @@ namespace PROTO.WebAPI.Controllers
         /// This endpoint returns all products from the repository matching a createdOn date
         /// </summary>
         /// <returns>List of product objects</returns>
+
+        [Authorize(Roles = "ro,rw")]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -46,6 +48,7 @@ namespace PROTO.WebAPI.Controllers
         /// </remarks>
         /// <response code="201">Returns the newly created item</response>
         /// <response code="400">If the item is null</response>
+        [Authorize(Roles = "ro,rw")]
         [Route("getByDate/{dateTime}")]
         [HttpGet]
         public async Task<IActionResult> GetAllByDate(DateTime dateTime)
@@ -58,6 +61,7 @@ namespace PROTO.WebAPI.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Product object</returns>
+        [Authorize(Roles = "rw")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -71,6 +75,7 @@ namespace PROTO.WebAPI.Controllers
         /// </summary>
         /// <param name="product"></param>
         /// <returns>Status for creation</returns>
+        [Authorize(Roles = "rw")]
         [HttpPost]
         public async Task<IActionResult> Add(HostDevice product)
         {
@@ -83,6 +88,7 @@ namespace PROTO.WebAPI.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Status for deletion</returns>
+        [Authorize(Roles = "rw")]
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
@@ -95,6 +101,7 @@ namespace PROTO.WebAPI.Controllers
         /// </summary>
         /// <param name="HostDevice"></param>
         /// <returns>Status for update</returns>
+        [Authorize(Roles = "rw")]
         [HttpPut]
         public async Task<IActionResult> Update(HostDevice dev)
         {
