@@ -2,10 +2,14 @@
 using PROTO.UseCase.Interfaces;
 using PROTO.Core.Models;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PROTO.WebAPI.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
+    [ApiController]
+   
     public class HostDeviceController : Controller
     {
         //Unit of work to give access to the repositories

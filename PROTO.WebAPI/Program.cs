@@ -1,13 +1,20 @@
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using System.Net.Http;
 using PROTO.UseCase.Interfaces;
 using PROTO.Core.Models;
 using PROTO.Infrastructure.Repositories;
+using PROTO.WebAPI.Handlers;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
     {
@@ -31,12 +38,14 @@ builder.Services.AddSwaggerGen(c =>
             }
         });
     });
-
+    builder.Services.AddAuthentication("BasicAuthentication").AddScheme<AuthenticationSchemeOptions,BasicAuthenticationHandler>("BasicAuthentication", null);
     builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
     builder.Services.AddTransient<IHostDeviceRepository, HostDeviceRepository>();
     builder.Services.AddTransient<IUnitOfWorkSP, UnitOfWorkSP>();
     builder.Services.AddTransient<IHostDeviceRepositorySP, HostDeviceRepositorySP>();
-    var app = builder.Build();
+    builder.Services.AddTransient<IBasicAuthRepository, BasicAuthRepository>();
+    builder.Services.AddTransient<IUnitOfWorkAuth, UnitOfWorkAuth>();
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -44,7 +53,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
