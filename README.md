@@ -7,6 +7,17 @@ Reference: https://code-maze.com/using-dapper-with-asp-net-core-web-api/
 
 ### Create Table
 ```sql
+CREATE TABLE [dbo].[BasicAuth](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UserName] [nvarchar](50) NOT NULL,
+	[PassWord] [nvarchar](50) NOT NULL,
+	[Role] [nvarchar](50) NOT NULL
+) ON [PRIMARY]
+GO
+```
+
+### Create Table
+```sql
 CREATE TABLE [dbo].[Host_Devices](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Hostname] [nvarchar](120) NOT NULL,

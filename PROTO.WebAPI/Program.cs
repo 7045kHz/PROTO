@@ -7,6 +7,7 @@ using PROTO.UseCase.Interfaces;
 using PROTO.Core.Models;
 using PROTO.Infrastructure.Repositories;
 using PROTO.WebAPI.Handlers;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,6 +38,29 @@ builder.Services.AddSwaggerGen(c =>
                 Url = new Uri("https://test.com/license") // Add url of license details
             }
         });
+        c.AddSecurityDefinition("basic", new OpenApiSecurityScheme
+        {
+            Name = "Authorization",
+            Type = SecuritySchemeType.Http,
+            Scheme = "basic",
+            In = ParameterLocation.Header,
+            Description = "Basic Authorization header using the Bearer scheme."
+        });
+
+        c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+              new OpenApiSecurityScheme
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "basic"
+                    }
+                },
+                new string[] {}
+        }
+    });
     });
     builder.Services.AddAuthentication("BasicAuthentication").AddScheme<AuthenticationSchemeOptions,BasicAuthenticationHandler>("BasicAuthentication", null);
     builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
