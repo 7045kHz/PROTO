@@ -11,6 +11,7 @@ namespace PROTO.UseCase.Interfaces
     public interface IUnitOfWorkAuth
     {
         IBasicAuthRepository BasicAuthorization { get; }
+        IProjectScheduleRepository ProjectSchedule { get; }
     }
     
 }

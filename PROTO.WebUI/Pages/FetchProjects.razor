@@ -1,0 +1,54 @@
+﻿@page "/fetchprojects"
+
+<PageTitle>Project Details</PageTitle>
+
+@using PROTO.Core.Models
+@using PROTO.UseCase.Interfaces
+@using PROTO.Infrastructure.Repositories
+@inject IProjectScheduleRepository ProjectScheduleRepository
+
+<h1>Project forecast</h1>
+
+<p>This component demonstrates fetching data from a service.</p>
+
+@if (projects == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Project</th>
+                <th>Owned By</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Update Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in projects)
+            {
+                <tr>
+                    <td>@p.Project</td>
+                    <td>@p.OwnedBy</td>
+                    <td>@p.StartDate.ToShortDateString()</td>
+                    <td>@p.EndDate.ToShortDateString()</td>
+                    <td>@p.UpdatedOn.ToShortDateString()</td>
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private ProjectSchedule[]? projects;
+
+    protected override async Task OnInitializedAsync()
+    {
+        projects = (await ProjectScheduleRepository.GetAllAsync()).ToArray();
+    }
+}

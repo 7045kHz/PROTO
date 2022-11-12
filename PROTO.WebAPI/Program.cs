@@ -68,6 +68,7 @@ builder.Services.AddSwaggerGen(c =>
     builder.Services.AddTransient<IUnitOfWorkSP, UnitOfWorkSP>();
     builder.Services.AddTransient<IHostDeviceRepositorySP, HostDeviceRepositorySP>();
     builder.Services.AddTransient<IBasicAuthRepository, BasicAuthRepository>();
+    builder.Services.AddTransient<IProjectScheduleRepository, ProjectScheduleRepository>();
     builder.Services.AddTransient<IUnitOfWorkAuth, UnitOfWorkAuth>();
 var app = builder.Build();
 

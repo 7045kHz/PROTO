@@ -10,12 +10,14 @@ namespace PROTO.Infrastructure.Repositories
 {
     public class UnitOfWorkAuth : IUnitOfWorkAuth
     {
-        public UnitOfWorkAuth(IBasicAuthRepository basicRepository)
+        public UnitOfWorkAuth(IBasicAuthRepository basicRepository, IProjectScheduleRepository projectRepository)
         {
             BasicAuthorization = basicRepository;
+            ProjectSchedule = projectRepository;
         }
 
         public IBasicAuthRepository BasicAuthorization { get; }
+        public IProjectScheduleRepository ProjectSchedule { get; }
 
     }
 }
