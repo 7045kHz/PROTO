@@ -25,6 +25,8 @@ else
                 <th>Start Date</th>
                 <th>End Date</th>
                 <th>Update Date</th>
+                <th>Total Days</th>
+                <th>Remaining Days</th>
             </tr>
         </thead>
         <tbody>
@@ -35,7 +37,9 @@ else
                     <td>@p.OwnedBy</td>
                     <td>@p.StartDate.ToShortDateString()</td>
                     <td>@p.EndDate.ToShortDateString()</td>
-                    <td>@p.UpdatedOn.ToShortDateString()</td>
+                    <td>@p.UpdateOn.ToShortDateString()</td>
+                    <td>@p.Total.Days</td>
+                    <td>@p.Remaining.Days</td>
 
 
                 </tr>

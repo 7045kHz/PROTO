@@ -12,8 +12,11 @@ namespace PROTO.Core.Models
         public string Project { get; set; } = String.Empty;
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public DateTime UpdatedOn { get; set; }
+        public DateTime UpdateOn { get; set; }
         public string OwnedBy { get; set; } = String.Empty;
-
+       
+        public TimeSpan Total { get => EndDate - StartDate;  }
+        public TimeSpan Remaining { get => EndDate - UpdateOn ; }
+       
     }
 }
